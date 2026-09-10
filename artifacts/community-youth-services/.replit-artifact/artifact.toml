@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Community Youth Services"
+description = "A refreshed public website for Community Youth Services, helping young people and families find support, programs, and ways to get involved."
+version = "1.0.0"
+id = "artifacts/community-youth-services"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25645
+
+[services.development]
+run = "pnpm --filter @workspace/community-youth-services run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/community-youth-services", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/community-youth-services/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25645"
+BASE_PATH = "/"

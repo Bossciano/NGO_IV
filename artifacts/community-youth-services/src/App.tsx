@@ -222,14 +222,25 @@ function Modal({
             <button className="button-dark mt-6 min-h-11" onClick={onClose} data-testid="button-finish-modal">Close</button>
           </div>
         ) : isDonation ? (
-          <div className="grid gap-3 sm:grid-cols-3">
-            {['₦5,000', '₦15,000', 'Other amount'].map((amount, index) => (
-              <button key={amount} className={`rounded-2xl border p-5 text-left transition-colors hover:border-[#f4a340] ${index === 1 ? 'border-[#f4a340] bg-[#f4a340]/15' : 'border-[#183329]/15'}`} onClick={() => setSent(true)} data-testid={`button-donate-${index}`}>
-                <span className="block text-lg font-bold">{amount}</span>
-                <span className="mt-2 block text-xs leading-5 text-[#52665d]">{index === 0 ? 'A learning day' : index === 1 ? 'Tools + mentorship' : 'Choose what feels right'}</span>
-              </button>
-            ))}
-            <p className="col-span-full mt-4 text-xs leading-5 text-[#52665d]">For bank transfer or partnership support, email communityyouthdevelopmentsocie@gmail.com.</p>
+          <div className="space-y-6">
+            <div className="rounded-2xl border border-[#183329]/15 bg-[#f4a340]/5 p-5">
+              <p className="mb-4 text-sm font-bold text-[#183329]">Bank Transfer Details</p>
+              <div className="space-y-3">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[#52665d]">Account Name</p>
+                  <p className="mt-1 text-sm text-[#183329]">AC Empowerment Initiatives</p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[#52665d]">Account Number</p>
+                  <p className="mt-1 text-sm font-mono text-[#183329]">3005008601</p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[#52665d]">Bank Name</p>
+                  <p className="mt-1 text-sm text-[#183329]">GTB Bank</p>
+                </div>
+              </div>
+            </div>
+            <p className="text-xs leading-5 text-[#52665d]">For partnership support or other payment methods, email communityyouthdevelopmentsocie@gmail.com.</p>
           </div>
         ) : (
           <form className="space-y-4" onSubmit={handleSubmit}>
